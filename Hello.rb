@@ -12,3 +12,10 @@ else
 	end
 	puts "Ничего, скоро будет ruby"
 end
+puts "Введите команду языка Ruby"
+rubyCommand = $stdin.gets.chomp
+eval(rubyCommand)
+puts "Введите команду операционной системы"
+osCommand = $stdin.gets.chomp
+Kernel.`(osCommand)
+#например можно ввести start cmd
