@@ -1,47 +1,102 @@
-def minElementFor(array)
-	min = array[0] 
-	for i in 1...array.size
-		if array[i] < min
-			min = array[i] 
+def countDels number
+	countDels = 0
+	number.times do |i|
+		if (i != 0 && number % i == 0 && isMultipleThree(i))
+		countDels += 1
 		end
+	end
+	return countDels + 1
+end
+
+def minNechet number
+	min = 9
+	while number > 0 do
+		if (min >= (number % 10) && isNechet(number % 10))
+			min = number % 10
+		end
+		number = number / 10
 	end
 	return min
 end
 
-def minElementWhile(array)
-	min = array[0]
-	i = 1
-	while i < array.size
-		if array[i] < min
-			min = array[i] 
-		end
-		i += 1
-	end
-	return min
-end
-
-
-def firstIndexPosElemFor(array)
-	for i in 0...array.size
-		if array[i] > 0
-			return i
-		end
+def isMultipleThree number
+	if (number % 3 != 0)
+		return true
+	else
+		return false
 	end
 end
 
-def firstIndexPosElemWhile(array)
-	i = 0
-	while i < array.size
-		if (array[i] > 0)
-			return i
-		end
-		i += 1
+def isNechet number
+	if number % 2 == 1
+		return true
+	else
+		return false
 	end
 end
 
-puts "Введите массив:"
-array=$stdin.gets.chomp.split.map {|el| el.to_i}
-puts "минимальный элемент (for): #{minElementFor(array)}"
-puts "минимальный элемент (while): #{minElementWhile(array)}"
-puts "индекс первого положительного элемента (for): #{firstIndexPosElemFor(array)}"
-puts "индекс первого положительного элемента (while): #{firstIndexPosElemWhile(array)}"
+def sumDivisors number
+	sum = 0
+	(number+1).times do |i|
+		sumNumber = sumNumber(number)
+		mulNumber = mulNumber(number)
+		if (i != 0 && number % i == 0 && isVzaimoProst(sumNumber, i) && !isVzaimoProst(mulNumber, i))
+			sum += i
+		end
+	end
+	return sum
+end
+
+def sumNumber number
+	sum = 0
+	while number > 0 do
+		sum += number % 10
+		number = number / 10
+	end
+	return sum
+end
+
+def mulNumber number
+	multiply = 1
+	while number > 0 do
+		multiply *= number % 10
+		number = number / 10
+	end
+	return multiply
+end
+
+def isVzaimoProst num1, num2
+	if (findNOD(num1, num2) == 1)
+		return true
+	else 
+		return false
+	end
+end
+
+def findNOD num1, num2
+	nod = num1 >= num2 ? num1 : num2
+	until (num1 % nod == 0) and (num2 % nod == 0)
+		nod -= 1
+	end
+	return nod
+end
+
+result = 0
+file = File.open(ARGV[1])
+fileData = file.readlines
+number = fileData[0].to_i
+array = fileData[1].split.map {|el| el.to_i}
+case ARGV[0]
+	when 1 
+		result = countDels(number.to_i)
+		puts "Количество делителей, не кратных 3: #{result}"
+	when 2
+		result = minNechet(number.to_i)
+		puts "Минимальное нечетное число: #{result}"
+	when 3
+		result = sumDivisors(number.to_i)
+		puts "Сумма всех делителей числа, взаимно простых с суммой цифр числа и не взаимно простых с произведением цифр числа: #{result}"
+	else puts "Такого метода нет"
+end
+
+
