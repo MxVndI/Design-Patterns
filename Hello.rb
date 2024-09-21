@@ -109,12 +109,12 @@ divisors = count_dels(number.to_i)
 puts "Количество делителей, не кратных 3: #{divisors}"
 puts "Введите число"
 number = $stdin.gets.chomp
-minNech = min_nechet(number.to_i)
-puts "Минимальное нечетное число: #{minNech}"
+min_nech = min_nechet(number.to_i)
+puts "Минимальное нечетное число: #{min_nech}"
 puts "Введите число"
 number = $stdin.gets.chomp
-sumDiv = sum_divisors(number.to_i)
-puts "Сумма всех делителей числа, взаимно простых с суммой цифр числа и не взаимно простых с произведением цифр числа: #{sumDiv}"
+sum_div = sum_divisors(number.to_i)
+puts "Сумма всех делителей числа, взаимно простых с суммой цифр числа и не взаимно простых с произведением цифр числа: #{sum_div}"
 
 def min_element_for(array)
 	min = array[0] 
