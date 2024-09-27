@@ -62,6 +62,6 @@ class Student
       ["почта", @mail],
       ["телефон", @phone]
     ].select { |_, value| !value.nil? && !value.empty? }
-		return "Информация #{@surname} #{@name[0]}. #{@last_name[0]}., git: #{@git}, contacts"
+		return "#{@surname} #{@name[0]}.#{@last_name[0]}., #{@git}, #{contacts}"
 	end
 end
