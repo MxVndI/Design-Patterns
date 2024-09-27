@@ -32,5 +32,11 @@ class Student
 		return "Student {name: #{name}, surname: #{surname}, last_name: #{last_name}, id: #{@id}, 
 		phone: #{@phone}, telegram: #{@telegram}, mail: #{@email}, git: #{@git} }\n"
 	end
+	
+	def validate()
+		if (@git != nil and (@phone !=nil or @telegram != nil or @mail != nil)) return true
+		else return false
+		else
+	end
 
 end
