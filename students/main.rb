@@ -5,5 +5,6 @@ student2 = Student.new(name: "Afd", surname: "Vdsf", last_name: "Gfd",
 puts student2.name
 puts student2.phone
 puts student2.to_s
-
+student2.set_contacts(git: "sfdf")
+puts student2.to_s
 #мысль, лучше запишу здесь чем забуду. Можно ли было сделать класс Validator и там уже проверять наши сущности
