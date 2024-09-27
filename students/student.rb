@@ -56,4 +56,12 @@ class Student
 		end
 	end
 
+	def get_info()
+	  contacts = [
+      ["телеграмм", @telegram],
+      ["почта", @mail],
+      ["телефон", @phone]
+    ].select { |_, value| !value.nil? && !value.empty? }
+		return "Информация #{@surname} #{@name[0]}. #{@last_name[0]}., git: #{@git}, contacts"
+	end
 end
