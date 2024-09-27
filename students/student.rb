@@ -11,4 +11,10 @@ class Student
 		@git = git
 	end
 	
+	def to_s()
+		return "Student {name: #{name}, surname: #{surname}, last_name: #{last_name}, id: #{@id}, 
+		phone: #{@phone}, telegram: #{@telegram}, mail: #{@email}, git: #{@git} }\n"
+	end
+
+	
 end
