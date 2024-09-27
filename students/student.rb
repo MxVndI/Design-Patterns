@@ -5,7 +5,10 @@ class Student
 		@name = name
 		@surname = surname
 		@last_name = last_name
-		@phone = phone
+		if (Student.isPhone?(phone) and phone != nil)
+			@phone = phone
+		else raise("Uncorrect phone number")
+		end
 		@telegram = telegram
 		@mail = mail
 		@git = git
@@ -16,5 +19,9 @@ class Student
 		phone: #{@phone}, telegram: #{@telegram}, mail: #{@email}, git: #{@git} }\n"
 	end
 
-	
+	def self.isPhone?(phone)
+		phone_regex = /\A\+?\d{1,2}\s?\d{10}[\s.-]?\z/
+		return !!phone.match?(phone_regex)
+	end
+
 end
