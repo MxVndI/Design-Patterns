@@ -1,67 +1,85 @@
 require_relative "uservalidator.rb"
+require_relative "studentBase.rb"
 
-class Student
-	attr_accessor :id, :name, :surname, :last_name
-	attr_reader :phone, :telegram, :mail, :git
+class Student < StudentBase
+	attr_accessor :name, :surname, :lastname, :git
+	attr_reader :id, :phone, :telegram, :mail 
 	
-	def initialize(name:, surname:, last_name:, phone: nil, telegram: nil, mail: nil, git: nil, id: nil)
-		@id = id
-		if (UserValidator.is_valid_name?(name))
-			@name = name
-		end
-		if (UserValidator.is_valid_surname?(surname))
-			@surname = surname
-		end
-		if (UserValidator.is_valid_last_name?(last_name))
-			@last_name = last_name
-		end
-		if (UserValidator.is_valid_phone?(phone))
-			@phone = phone
-		end
-		if (UserValidator.is_valid_telegram?(telegram))
-			@telegram = telegram
-		end
-		if (UserValidator.is_valid_mail?(mail))
-			@mail = mail
-		end
-		if (UserValidator.is_valid_git?(git))
-			@git = git
-		end
+	def initialize(name:, surname:, lastname:, phone: nil, telegram: nil, mail: nil, git: nil, id:)
+		super(id, git: git)
+		self.name = name
+		self.surname = surname
+		self.lastname = lastname
+		set_contacts(phone: phone, telegram: telegram, mail: mail)
 	end
 	
 	def to_s()
-		return "Student {name: #{name}, surname: #{surname}, last_name: #{last_name}, id: #{@id}, 
-		phone: #{@phone}, telegram: #{@telegram}, mail: #{@email}, git: #{@git} }\n"
+		return "Student {id: #{@id}, name: #{name}, surname: #{surname}, lastname: #{lastname},  
+		contacts: #{get_contacts()} git: #{@git} }\n"
+	end
+
+	def set_contacts(phone: nil, telegram: nil, mail: nil)
+		self.phone = phone
+		self.telegram = telegram
+		self.mail = mail
 	end
 	
-	def validate()
-		if (@git != nil and (@phone !=nil or @telegram != nil or @mail != nil)) 
-			return true
-		else return false
+	private def name=(value)
+		if (UserValidator.is_valid_nameParams?(value))
+			@name = value
+		end
+	end
+	
+	private def surname=(value)
+		if (UserValidator.is_valid_nameParams?(value))
+			@surname = value
+		end
+	end
+	
+	private def lastname=(value)
+		if (UserValidator.is_valid_nameParams?(value))
+			@lastname = value
+		end
+	end
+	
+	private def phone=(value)
+		if (UserValidator.is_valid_phone?(value))
+			@phone = value
 		end
 	end
 
-	def set_contacts(phone: nil, telegram: nil, mail: nil, git: nil)
-		if (phone != nil and UserValidator.is_valid_phone?(phone))
-			@phone = phone
+	private def git=(value)
+		if (UserValidator.is_valid_git?(value))
+			@git = value
 		end
-		if (telegram != nil and UserValidator.is_valid_telegram?(telegram))
-			@telegram = telegram
+	end
+	
+	private def telegram=(value)
+		if (UserValidator.is_valid_telegram?(value))
+			@telegram = value
 		end
-		if (mail != nil and UserValidator.is_valid_mail?(mail))
-			@mail = mail
+	end
+	
+	private def mail=(value)
+		if (UserValidator.is_valid_mail?(value))
+			@mail = value
 		end
-		if (git != nil and UserValidator.is_valid_git?(git))
-			@git = git
-		end
+	end
+
+	private def get_initials()
+		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
+	end
+
+	def get_contacts()
+		contacts = [
+			["телеграмм", @telegram],
+			["почта", @mail],
+			["телефон", @phone]
+		].select { |_, value| !value.nil? && !value.empty? }
+		return contacts
 	end
 
 	def get_info()
-	  contacts = [
-      ["телеграмм", @telegram],
-      ["почта", @mail],
-      ["телефон", @phone]
-    ].select { |_, value| !value.nil? && !value.empty? }
-		return "#{@surname} #{@name[0]}.#{@last_name[0]}., #{@git}, #{contacts}"
+		return "#{get_initials()}, #{@git}, #{get_contacts()}"
 	end
 end
