@@ -1,4 +1,4 @@
-require_relative "uservalidator.rb"
+require_relative '../validator/uservalidator.rb'
 require_relative "studentBase.rb"
 
 class Student < StudentBase
@@ -45,12 +45,6 @@ class Student < StudentBase
 	private def phone=(value)
 		if (UserValidator.is_valid_phone?(value))
 			@phone = value
-		end
-	end
-
-	private def git=(value)
-		if (UserValidator.is_valid_git?(value))
-			@git = value
 		end
 	end
 	

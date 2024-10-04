@@ -15,7 +15,7 @@ class StudentShort < StudentBase
   def parseStudentInfo(student_info)
     info = student_info.split(",")
     @FIO = info[0]
-    @git = info[1]
+    self.git = info[1]
     @contact = info[2]
   end
 end

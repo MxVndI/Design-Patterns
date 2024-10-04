@@ -1,5 +1,5 @@
-require_relative "student.rb"
-require_relative "studentShort.rb"
+require_relative "model/student.rb"
+require_relative "model/studentShort.rb"
 
 student2 = Student.new(id: 2, name: "Afd", surname: "Vdsf", lastname: "Gfd",
  phone: "89182876876", git: "fdslfdsf", telegram: "@fdsfd", mail: "test@example.com", )
