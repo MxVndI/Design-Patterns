@@ -7,11 +7,16 @@ class StudentBase
    end
 
    def validate()
-	if (@git != nil and (@phone != nil or @telegram != nil or @mail != nil or @contact != nil)) 
+	if (has_git() and (@phone != nil or @telegram != nil or @mail != nil or @contact != nil)) 
 		return true
-		else return false
-		end
+	else 
+		return false
 	end
+    end
+
+    def has_git()
+	return @git != nil    
+    end
 	
     def git=(value)
 	if (UserValidator.is_valid_git?(value))
