@@ -2,8 +2,8 @@ require_relative '../validator/uservalidator.rb'
 
 class StudentBase
    def initialize(id: nil, git: nil)
-       @id = id.to_i
-       @git = git
+       self.id = id.to_i
+       self.git = git
    end
 
    def validate()
