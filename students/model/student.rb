@@ -5,8 +5,8 @@ class Student < StudentBase
 	attr_accessor :name, :surname, :lastname, :git
 	attr_reader :id, :phone, :telegram, :mail 
 	
-	def initialize(name:, surname:, lastname:, phone: nil, telegram: nil, mail: nil, git: nil, id:)
-		super(id, git: git)
+	def initialize(name:, surname:, lastname:, phone: nil, telegram: nil, mail: nil, git: nil, id: nil)
+		super(id: id, git: git)
 		self.name = name
 		self.surname = surname
 		self.lastname = lastname
