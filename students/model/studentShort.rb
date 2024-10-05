@@ -12,7 +12,7 @@ class StudentShort < StudentBase
     end
   end
   
-  def parseStudentInfo(student_info)
+  private def parseStudentInfo(student_info)
     info = student_info.split(",")
     @FIO = info[0]
     self.git = info[1]
