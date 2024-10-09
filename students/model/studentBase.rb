@@ -2,7 +2,7 @@ require_relative '../validator/uservalidator.rb'
 
 class StudentBase
    def initialize(id: nil, git: nil)
-       self.id = id.to_i
+       @id = id.to_i
        self.git = git
    end
 
@@ -19,7 +19,7 @@ class StudentBase
     end
 
     def has_contact()
-    	return !@phone.nil? or !@telegram.nil? !@mail.nil? or !@contact.nil?
+    	return !@phone.nil? || !@telegram.nil? || !@mail.nil? || !@contact.nil?
     end
 	
     def git=(value)

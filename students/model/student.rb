@@ -25,39 +25,27 @@ class Student < StudentBase
 	end
 	
 	private def name=(value)
-		if (UserValidator.is_valid_nameParams?(value))
-			@name = value
-		end
+		validate_and_set(value, UserValidator.method(:is_valid_nameParams?)) { @name = value }
 	end
 	
 	private def surname=(value)
-		if (UserValidator.is_valid_nameParams?(value))
-			@surname = value
-		end
+		validate_and_set(value, UserValidator.method(:is_valid_nameParams?)) { @surname = value }
 	end
 	
 	private def lastname=(value)
-		if (UserValidator.is_valid_nameParams?(value))
-			@lastname = value
-		end
+		validate_and_set(value, UserValidator.method(:is_valid_nameParams?)) { @lastname = value }
 	end
 	
 	private def phone=(value)
-		if (UserValidator.is_valid_phone?(value))
-			@phone = value
-		end
+		validate_and_set(value, UserValidator.method(:is_valid_phone?)) { @phone = value }
 	end
 	
 	private def telegram=(value)
-		if (UserValidator.is_valid_telegram?(value))
-			@telegram = value
-		end
+		validate_and_set(value, UserValidator.method(:is_valid_telegram?)) { @telegram = value }
 	end
 	
 	private def mail=(value)
-		if (UserValidator.is_valid_mail?(value))
-			@mail = value
-		end
+		validate_and_set(value, UserValidator.method(:is_valid_mail?)) { @mail = value }
 	end
 
 	private def get_initials()
@@ -65,15 +53,23 @@ class Student < StudentBase
 	end
 
 	def get_contacts()
-		contacts = [
-			["телеграмм", @telegram],
-			["почта", @mail],
-			["телефон", @phone]
-		].select { |_, value| !value.nil? && !value.empty? }
-		return contacts
+		{
+      telegram: @telegram,
+      mail: @mail,
+      phone: @phone
+		}.compact
 	end
 
 	def get_info()
 		return "#{get_initials()}, #{@git}, #{get_contacts()}"
 	end
+	
+	def validate_and_set(value, validation_method)
+    if validation_method.call(value)
+      yield
+    else
+      raise ArgumentError, "#{value} is invalid."
+    end
+  end
+
 end
