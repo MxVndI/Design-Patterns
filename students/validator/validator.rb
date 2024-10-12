@@ -1,4 +1,4 @@
-module Validator
+class Validator
   FULLNAME_REGEX = /\A[A-Z]{1}[A-Za-z\s'-]{2,}\z/
   GITHUB_USERNAME_REGEX = /\A[a-zA-Z0-9_-]{1,}\z/
   EMAIL_REGEX = /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/
