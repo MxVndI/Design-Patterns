@@ -25,31 +25,31 @@ class Student < StudentBase
 	end
 	
 	private def name=(value)
-		validate_and_set(value, Validator.method(:is_valid_nameParams?)) { @name = value }
+		validate_and_set(value, Validator.is_valid_nameParams?(value)) { @name = value }
 	end
 	
 	private def surname=(value)
-		validate_and_set(value, Validator.method(:is_valid_nameParams?)) { @surname = value }
+		validate_and_set(value, Validator.is_valid_nameParams?(value)) { @surname = value }
 	end
 	
 	private def lastname=(value)
-		validate_and_set(value, Validator.method(:is_valid_nameParams?)) { @lastname = value }
+		validate_and_set(value, Validator.is_valid_nameParams?(value)) { @lastname = value }
 	end
 	
 	private def phone=(value)
-		validate_and_set(value, Validator.method(:is_valid_phone?)) { @phone = value }
+		validate_and_set(value, Validator.is_valid_phone?(value)) { @phone = value }
 	end
 	
 	private def telegram=(value)
-		validate_and_set(value, Validator.method(:is_valid_telegram?)) { @telegram = value }
+		validate_and_set(value, Validator.is_valid_telegram?(value)) { @telegram = value }
 	end
 	
 	private def mail=(value)
-		validate_and_set(value, Validator.method(:is_valid_mail?)) { @mail = value }
+		validate_and_set(value, Validator.is_valid_mail?(value)) { @mail = value }
 	end
 
     	private def git=(value)
-		validate_and_set(value, Validator.method(:is_valid_git?)) { @git = value }
+		validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
         end
 	
 	private def get_initials()
@@ -68,12 +68,12 @@ class Student < StudentBase
 		return "#{get_initials()}, #{@git}, #{get_contacts()}"
 	end
 	
-	private def validate_and_set(value, validation_method)
-    if validation_method.call(value)
-      yield
-    else
-      raise ArgumentError, "#{value} is invalid."
-    end
-  end
+	private def validate_and_set(value, isValid)
+    		if isValid
+      			yield
+    		else
+      			raise ArgumentError, "#{value} is invalid."
+    		end
+  	end
 
 end
