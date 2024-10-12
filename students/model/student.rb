@@ -25,15 +25,15 @@ class Student < StudentBase
 	end
 	
 	private def name=(value)
-		validate_and_set(value, Validator.is_valid_nameParams?(value)) { @name = value }
+		validate_and_set(value, Validator.is_valid_name_params?(value)) { @name = value }
 	end
 	
 	private def surname=(value)
-		validate_and_set(value, Validator.is_valid_nameParams?(value)) { @surname = value }
+		validate_and_set(value, Validator.is_valid_name_params?(value)) { @surname = value }
 	end
 	
 	private def lastname=(value)
-		validate_and_set(value, Validator.is_valid_nameParams?(value)) { @lastname = value }
+		validate_and_set(value, Validator.is_valid_name_params?(value)) { @lastname = value }
 	end
 	
 	private def phone=(value)
