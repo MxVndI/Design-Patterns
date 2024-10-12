@@ -5,7 +5,7 @@ class Validator
   TELEGRAM_USERNAME_REGEX = /\A@?[a-zA-Z0-9_]{1,}\z/
   PHONE_REGEX = /\A\+?\d{1,2}\s?\d{10}[\s.-]?\z/
 
-  def self.is_valid_nameParams?(value)
+  def self.is_valid_name_params?(value)
     return !!value.match?(FULLNAME_REGEX) && value != nil
   end
 
