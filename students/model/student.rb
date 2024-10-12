@@ -2,6 +2,7 @@ require_relative '../validator/uservalidator.rb'
 require_relative "studentBase.rb"
 
 class Student < StudentBase
+	include Validator
 	attr_accessor :name, :surname, :lastname, :git
 	attr_reader :id, :phone, :telegram, :mail 
 	
@@ -25,7 +26,7 @@ class Student < StudentBase
 	end
 	
 	private def name=(value)
-		validate_and_set(value, UserValidator.method(:is_valid_nameParams?)) { @name = value }
+		validate_and_set(value, is_valid_nameParams?) { @name = value }
 	end
 	
 	private def surname=(value)
