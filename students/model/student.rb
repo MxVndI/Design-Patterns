@@ -49,6 +49,10 @@ class Student < StudentBase
 		validate_and_set(value, UserValidator.method(:is_valid_mail?)) { @mail = value }
 	end
 
+    	private def git=(value)
+		validate_and_set(value, is_valid_git?) { @git = value }
+        end
+	
 	private def get_initials()
 		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
 	end
@@ -65,7 +69,7 @@ class Student < StudentBase
 		return "#{get_initials()}, #{@git}, #{get_contacts()}"
 	end
 	
-	def validate_and_set(value, validation_method)
+	private def validate_and_set(value, validation_method)
     if validation_method.call(value)
       yield
     else
