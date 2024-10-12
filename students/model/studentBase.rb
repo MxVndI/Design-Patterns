@@ -7,11 +7,7 @@ class StudentBase
    end
 
    def validate()
-	if (has_git() and has_contact()) 
-		return true
-	else 
-		return false
-	end
+	return (has_git() && has_contact()) 
     end
 
     def has_git()
