@@ -68,7 +68,7 @@ class Student < StudentBase
 		return "#{get_initials()}, #{@git}, #{get_contacts()}"
 	end
 	
-	private def validate_and_set(value, isValid)
+	private def validate_and_set(value, is_valid)
     		if isValid
       			yield
     		else
