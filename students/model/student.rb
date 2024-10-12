@@ -24,15 +24,15 @@ class Student < StudentBase
 		self.mail = mail
 	end
 	
-	private def name=(value)
+	def name=(value)
 		validate_and_set(value, Validator.is_valid_name_params?(value)) { @name = value }
 	end
 	
-	private def surname=(value)
+	def surname=(value)
 		validate_and_set(value, Validator.is_valid_name_params?(value)) { @surname = value }
 	end
 	
-	private def lastname=(value)
+	def lastname=(value)
 		validate_and_set(value, Validator.is_valid_name_params?(value)) { @lastname = value }
 	end
 	
