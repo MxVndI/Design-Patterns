@@ -22,9 +22,4 @@ class StudentBase
     	return !@phone.nil? || !@telegram.nil? || !@mail.nil? || !@contact.nil?
     end
 	
-    def git=(value)
-	if (UserValidator.is_valid_git?(value))
-		@git = value
-	end
-     end
 end
