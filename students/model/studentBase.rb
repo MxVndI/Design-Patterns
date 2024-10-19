@@ -21,5 +21,13 @@ class StudentBase
     def contact()
     	return @contact
     end
+
+    protected def validate_and_set(value, is_valid)
+    		if isValid
+      			yield
+    		else
+      			raise ArgumentError, "#{value} is invalid."
+    		end
+  	end
 	
 end
