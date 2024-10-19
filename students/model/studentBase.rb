@@ -6,16 +6,20 @@ class StudentBase
        self.git = git
    end
 
-   def validate()
+   def validate?()
 	return (has_git() && has_contact()) 
     end
 
-    def has_git()
+    def has_git?()
 	return !@git.nil?    
     end
 
-    def has_contact()
+    def has_contact?()
     	return !@phone.nil? || !@telegram.nil? || !@mail.nil? || !@contact.nil?
+    end
+	
+    def contact()
+    	return @contact
     end
 	
 end
