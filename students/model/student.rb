@@ -58,11 +58,11 @@ class Student < StudentBase
 
 	def contact()
 		if phone
-			return phone
+			return @phone
 		else if telegram
-			return telegram
+			return @telegram
 		else if
-			return mail
+			return @mail
 		else if
 			return "Нет контакта"
 		end
