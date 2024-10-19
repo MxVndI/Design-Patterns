@@ -29,5 +29,8 @@ class StudentBase
       			raise ArgumentError, "#{value} is invalid."
     		end
     end
-	
+
+    def git()
+    	return @git
+    end
 end
