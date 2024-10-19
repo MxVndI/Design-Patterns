@@ -1,6 +1,8 @@
 require_relative '../validator/uservalidator.rb'
 
 class StudentBase
+   attr_reader :id, :git
+	
    def initialize(id: nil, git: nil)
        @id = id.to_i
        self.git = git
@@ -28,9 +30,5 @@ class StudentBase
     		else
       			raise ArgumentError, "#{value} is invalid."
     		end
-    end
-
-    def git()
-    	return @git
     end
 end
