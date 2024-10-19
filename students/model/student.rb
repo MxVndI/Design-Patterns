@@ -57,11 +57,11 @@ class Student < StudentBase
 	end
 
 	def contact()
-		if phone
+		if @phone
 			return @phone
-		else if telegram
+		else if @telegram
 			return @telegram
-		else if
+		else if @mail
 			return @mail
 		else if
 			return "Нет контакта"
