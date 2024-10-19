@@ -6,18 +6,18 @@ class StudentShort < StudentBase
   private_class_method :new
 	
   def initialize(fio: nil, id: nil, contact: nil, git: nil)
-    super(id)
+    super(id: id, git: git)
     @fio = fio
     @contact = contact
-    @git = git	  
   end
   
   def self.parseStudentInfo(student_info)
     info = student_info.split(",")
-    fio = info[0]
-    git = info[1]
-    contact = info[2]
-    new(fio: fio, git: git, contact: contact)
+    id = info[0].to_i()
+    fio = info[1]
+    git = info[2]
+    contact = info[3]
+    new(id: id, fio: fio, git: git, contact: contact)
   end
 
   def self.parseStudent(student)
