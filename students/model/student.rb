@@ -69,6 +69,6 @@ class Student < StudentBase
 	end
 
 	def get_info()
-		return "#{get_initials()}, #{@git}, #{get_contacts()}"
+		return "#{id}, #{get_initials()}, #{@git}, #{get_contacts()}"
 	end
 end
