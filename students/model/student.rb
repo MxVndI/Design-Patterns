@@ -48,7 +48,7 @@ class Student < StudentBase
 		validate_and_set(value, Validator.is_valid_mail?(value)) { @mail = value }
 	end
 
-    	private def git=(value)
+    	def git=(value)
 		validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
         end
 	
