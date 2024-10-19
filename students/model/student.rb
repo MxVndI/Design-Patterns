@@ -71,13 +71,4 @@ class Student < StudentBase
 	def get_info()
 		return "#{get_initials()}, #{@git}, #{get_contacts()}"
 	end
-	
-	private def validate_and_set(value, is_valid)
-    		if isValid
-      			yield
-    		else
-      			raise ArgumentError, "#{value} is invalid."
-    		end
-  	end
-
 end
