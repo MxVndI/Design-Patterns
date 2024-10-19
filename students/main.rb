@@ -13,6 +13,3 @@ puts student3.name
 puts student3.phone
 puts student3.to_s
 puts student2.to_s
-
-studentshort1 = StudentShort.new(student: student2)
-puts studentshort1.validate()
