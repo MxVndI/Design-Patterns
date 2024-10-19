@@ -28,6 +28,6 @@ class StudentBase
     		else
       			raise ArgumentError, "#{value} is invalid."
     		end
-  	end
+    end
 	
 end
