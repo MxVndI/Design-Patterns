@@ -56,12 +56,16 @@ class Student < StudentBase
 		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
 	end
 
-	def get_contacts()
-		{
-      telegram: @telegram,
-      mail: @mail,
-      phone: @phone
-		}.compact
+	def contact()
+		if phone
+			return phone
+		else if telegram
+			return telegram
+		else if
+			return mail
+		else if
+			return "Нет контакта"
+		end
 	end
 
 	def get_info()
