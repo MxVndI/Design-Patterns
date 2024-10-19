@@ -1,9 +1,9 @@
 class Validator
-  private FULLNAME_REGEX = /\A[A-Z]{1}[A-Za-z\s'-]{2,}\z/
-  private GITHUB_USERNAME_REGEX = /\A[a-zA-Z0-9_-]{1,}\z/
-  private EMAIL_REGEX = /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/
-  private TELEGRAM_USERNAME_REGEX = /\A@?[a-zA-Z0-9_]{1,}\z/
-  private PHONE_REGEX = /\A\+?\d{1,2}\s?\d{10}[\s.-]?\z/
+  FULLNAME_REGEX = /\A[A-Z]{1}[A-Za-z\s'-]{2,}\z/
+  GITHUB_USERNAME_REGEX = /\A[a-zA-Z0-9_-]{1,}\z/
+  EMAIL_REGEX = /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/
+  TELEGRAM_USERNAME_REGEX = /\A@?[a-zA-Z0-9_]{1,}\z/
+  PHONE_REGEX = /\A\+?\d{1,2}\s?\d{10}[\s.-]?\z/
 
   def self.is_valid_name_params?(value)
     return !!value.match?(FULLNAME_REGEX) && value != nil
