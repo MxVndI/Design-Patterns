@@ -1,7 +1,7 @@
 require_relative "student.rb"
 
 class StudentShort < StudentBase
-  attr_reader :id, :fio, :git
+  attr_reader :id, :fio
 
   private_class_method :new
 	
