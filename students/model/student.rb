@@ -63,7 +63,7 @@ class Student < StudentBase
 			return @telegram
 		else if @mail
 			return @mail
-		else if
+		else
 			return "Нет контакта"
 		end
 	end
