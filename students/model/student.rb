@@ -47,10 +47,6 @@ class Student < StudentBase
 	private def mail=(value)
 		validate_and_set(value, Validator.is_valid_mail?(value)) { @mail = value }
 	end
-
-    	def git=(value)
-		validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
-        end
 	
 	private def get_initials()
 		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
