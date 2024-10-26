@@ -23,7 +23,11 @@ class StudentBase
     def contact()
     	return @contact
     end
-
+	
+    def git=(value)
+	validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
+    end
+	
     protected def validate_and_set(value, is_valid)
     		if isValid
       			yield
