@@ -11,7 +11,7 @@ class StudentShort < StudentBase
     @contact = contact
   end
   
-  def self.parseStudentInfo(student_info)
+  def self.parse_student_info(student_info)
     info = student_info.split(",")
     id = info[0].to_i()
     fio = info[1]
@@ -20,9 +20,9 @@ class StudentShort < StudentBase
     new(id: id, fio: fio, git: git, contact: contact)
   end
 
-  def self.parseStudent(student)
+  def self.parse_student(student)
     if student.is_a?(Student)
-	StudentShort.parseStudentInfo(student.get_info())
+	StudentShort.parse_student_info(student.get_info())
     end
   end
 end
