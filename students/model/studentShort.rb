@@ -1,7 +1,7 @@
 require_relative "student.rb"
 
 class StudentShort < StudentBase
-  attr_reader :id, :fio
+  attr_reader :id
 
   private_class_method :new
 	
@@ -22,7 +22,8 @@ class StudentShort < StudentBase
 
   def self.parse_student(student)
     if student.is_a?(Student)
-	StudentShort.parse_student_info(student.get_info())
+	    StudentShort.parse_student_info(student.get_info())
     end
   end
+
 end

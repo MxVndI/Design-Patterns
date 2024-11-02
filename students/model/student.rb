@@ -47,10 +47,6 @@ class Student < StudentBase
 	private def mail=(value)
 		validate_and_set(value, Validator.is_valid_mail?(value)) { @mail = value }
 	end
-	
-	private def get_initials()
-		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
-	end
 
 	def contact()
 		if @phone
@@ -60,7 +56,7 @@ class Student < StudentBase
 		else if @mail
 			return @mail
 		else
-			return "Нет контакта"
+			return nil
 		end
 	end
 

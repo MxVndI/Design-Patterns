@@ -25,7 +25,7 @@ class StudentBase
     end
 	
     def git=(value)
-	validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
+	    validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
     end
 	
     protected def validate_and_set(value, is_valid)
@@ -35,4 +35,9 @@ class StudentBase
       			raise ArgumentError, "#{value} is invalid."
     		end
     end
+
+    def get_initials()
+		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
+	end
+  
 end
