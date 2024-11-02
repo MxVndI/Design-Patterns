@@ -38,6 +38,6 @@ class StudentBase
 
     def get_initials()
 		return "#{@surname} #{@name[0]}.#{@lastname[0]}."
-	end
+    end
   
 end
