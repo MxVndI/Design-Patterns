@@ -25,5 +25,9 @@ class StudentShort < StudentBase
 	    StudentShort.parse_student_info(student.get_info())
     end
   end
-
+   
+  def get_initials()
+	return @fio
+  end
+	
 end
