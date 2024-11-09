@@ -2,8 +2,7 @@ require_relative '../validator/uservalidator.rb'
 require_relative "studentBase.rb"
 
 class Student < StudentBase
-	attr_accessor :name, :surname, :lastname
-	attr_reader :phone, :telegram, :mail 
+	attr_reader :name, :surname, :lastname, :phone, :telegram, :mail 
 	
 	def initialize(name:, surname:, lastname:, phone: nil, telegram: nil, mail: nil, git: nil, id: nil)
 		super(id: id, git: git)
