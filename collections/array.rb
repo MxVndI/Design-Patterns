@@ -17,7 +17,16 @@ def avg_array_modules(arr)
 	yield (avg)
 end
 
-
+def array_more_avg_less_max(arr)
+	new_array = []
+	avg = arr.inject{ |sum, el| sum + el }.to_f / arr.size
+	arr.each_with_index.select do |num, idx|
+		if (num > avg && num < arr.max)
+			new_array.append(num)
+        end
+    end
+	yield(new_array)
+end
 
 array = gets.chomp.split.map{|el| el.to_i} 
 index = gets.to_i
@@ -36,3 +45,5 @@ check_max_in_ab(array, a, b) { |result| puts "Максимум находися 
 puts array
 avg_array_modules (array) { |avg| puts "Среднее арифметическое модулей = #{avg}" }
 
+puts ("Исходный список = #{array}")
+array_more_avg_less_max (array) { |new_array| puts "Новый список = #{new_array}" }
