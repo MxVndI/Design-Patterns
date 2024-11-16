@@ -7,10 +7,17 @@ def swap_min_max(arr)
 	yield(arr)
 end
 
-def check_max_in_ab (array, a, b)
+def check_max_in_ab (arr, a, b)
 	arr.max >= a && arr.max < b
 	yield(a, b)
 end
+
+def avg_array_modules(arr)
+	avg = arr.sum / arr.size
+	yield (avg)
+end
+
+
 
 array = gets.chomp.split.map{|el| el.to_i} 
 index = gets.to_i
@@ -20,6 +27,12 @@ puts array
 swap_min_max(array) { |result| puts "Новый массив #{result}" }	
 
 puts array
+puts("Введите a")
 a = gets.to_i
+puts("Введите b")
 b = gets.to_i
-check_max_in_ab (array, a, b) { a, b puts " Максимум находися в интервале [#{a}, #{b}]" }	
+check_max_in_ab(array, a, b) { |result| puts "Максимум находися в интервале? #{result}" }	
+
+puts array
+avg_array_modules (array) { |avg| puts "Среднее арифметическое модулей = #{avg}" }
+
