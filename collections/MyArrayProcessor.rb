@@ -35,4 +35,15 @@ class MyArrayProcessor
         result
     end
 
+    def max_by(n = 1)
+        return @array.max if n == 1
+        result = []
+        array_copy = @array.dup
+        n.times do
+          max_val = array_copy.max
+          result << max_val unless max_val.nil?
+          array_copy.delete_at(array_copy.index(max_val)) if max_val
+        end
+        result
+      end      
 end
