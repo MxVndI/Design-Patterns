@@ -1,10 +1,17 @@
 class MyArrayProcessor
+    attr_reader :array
+
+    def initialize(array:nil)
+      @array = array
+    end    
+
     def cycle(n=nil)
         if (n.nil?)
             while true
                 self.array.each {|elem| yield(elem)}
             end
-        elif (n > 0)
+        end
+        if (n > 0)
             rounds = 0
             while rounds < n
                 self.array.each {|elem| yield(elem)}
@@ -20,5 +27,12 @@ class MyArrayProcessor
         return accumulator
     end
 
-    
+    def reject()
+        result = []
+        self.array.each do |elem|
+            result.append(elem) unless yield(elem)
+        end
+        result
+    end
+
 end
