@@ -12,4 +12,13 @@ class MyArrayProcessor
             end
         end
     end
+
+    def inject(accumulator = 0)
+        self.array.each do |elem|
+            accumulator = yield(accumulator, elem)
+        end
+        return accumulator
+    end
+
+    
 end
