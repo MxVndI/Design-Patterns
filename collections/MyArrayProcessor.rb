@@ -32,7 +32,7 @@ class MyArrayProcessor
         self.array.each do |elem|
             result.append(elem) unless yield(elem)
         end
-        result
+        return result
     end
 
     def max_by(n = 1)
@@ -44,6 +44,32 @@ class MyArrayProcessor
           result << max_val unless max_val.nil?
           array_copy.delete_at(array_copy.index(max_val)) if max_val
         end
-        result
-      end      
+        return result
+    end 
+    
+    def each_slice(slice_size)
+        raise ArgumentError, "#{slice_size} не положительное!" if slice_size < 1  
+        result = []
+        i = 0
+        while i < self.array.size
+            slice = self.array[i, slice_size]
+            result << slice.to_a
+            yield slice if block_given?
+            i += slice_size
+        end
+        return result
+    end
+
+    def sort_by
+        n = @array.length
+        (n - 1).times do
+          (0...n - 1).each do |i|
+            if yield(@array[i], @array[i + 1])
+              @array[i], @array[i + 1] = @array[i + 1], @array[i]
+            end
+          end
+        end
+        @array
+      end
+
 end

@@ -27,9 +27,20 @@ class MyArrayProcessorTest < Minitest::Test
     assert_equal 5, max_by
   end
 
+  def test_each_slice
+    result = []
+    @array_processor.each_slice(2) { |slice| result << slice }
+    assert_equal [[1, 2], [3, 4], [5]], result
+  end
+  
   def test_should_be_able_to_return_multiple_max_elements
     max_by = @array_processor.max_by(2) { |x| x.to_s.length }
     assert_equal [5, 4], max_by
     assert_equal 2, max_by.length
+  end
+
+  def test_sort_by
+    sorted = @array_processor.sort_by { |a, b| a < b }
+    assert_equal [5, 4, 3, 2, 1], sorted
   end
 end
