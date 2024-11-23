@@ -60,16 +60,16 @@ class MyArrayProcessor
         return result
     end
 
-    def sort_by
-        n = @array.length
-        (n - 1).times do
-          (0...n - 1).each do |i|
-            if yield(@array[i], @array[i + 1])
-              @array[i], @array[i + 1] = @array[i + 1], @array[i]
+    def sort_by()
+        arr = @array
+        (arr.length - 1).times do
+          (0...arr.length - 1).each do |i|
+            if yield(arr[i], arr[i + 1])
+              arr[i], arr[i + 1] = arr[i + 1], arr[i]
             end
           end
         end
-        @array
+        return arr
       end
-
+    
 end
