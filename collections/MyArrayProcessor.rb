@@ -41,7 +41,7 @@ class MyArrayProcessor
         array_copy = @array.dup
         n.times do
           max_val = array_copy.max
-          result << max_val unless max_val.nil?
+          result.append(max_val) unless max_val.nil?
           array_copy.delete_at(array_copy.index(max_val)) if max_val
         end
         return result
@@ -53,7 +53,7 @@ class MyArrayProcessor
         i = 0
         while i < self.array.size
             slice = self.array[i, slice_size]
-            result << slice.to_a
+            result.append(slice.to_a)
             yield slice if block_given?
             i += slice_size
         end
