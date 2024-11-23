@@ -48,18 +48,6 @@ case input_choice
         ensure
         file.close if file
         end
-    when "3"
-        begin
-        file = File.open('C:\Users\LeSunVo\Desktop\Design-Patterns\collections\input_list.txt', "r")
-        l1 = file.read.split.map(&:to_i)
-        l2 = file.read.split.map(&:to_i)
-        puts "Файл подключен успешно!"
-        rescue Errno::ENONET => error
-        puts "Обнаружена ошибка при работе с файлами: #{error}"
-        exit
-        ensure
-        file.close if file
-        end
     else
         puts "Некорректный выбор. Завершение программы."
         exit
