@@ -27,9 +27,9 @@ class MyArrayProcessorTest < Minitest::Test
     assert_equal 5, max_by
   end
 
-  def test_each_slice
+  def test_shoud_be_sliced
     result = []
-    @array_processor.each_slice(2) { |slice| result << slice }
+    @array_processor.each_slice(2) { |slice| result.append(slice) }
     assert_equal [[1, 2], [3, 4], [5]], result
   end
   
@@ -39,7 +39,7 @@ class MyArrayProcessorTest < Minitest::Test
     assert_equal 2, max_by.length
   end
 
-  def test_sort_by
+  def test_shoud_be_sorted_by_desc
     sorted = @array_processor.sort_by { |a, b| a < b }
     assert_equal [5, 4, 3, 2, 1], sorted
   end
