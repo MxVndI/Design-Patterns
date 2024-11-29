@@ -1,5 +1,4 @@
 class MyArrayProcessor
-    attr_reader :array
 
     def initialize(array:nil)
       @array = array

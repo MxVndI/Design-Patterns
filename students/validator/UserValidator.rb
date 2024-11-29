@@ -1,3 +1,5 @@
+require 'date'
+
 class Validator
   FULLNAME_REGEX = /\A[A-Z]{1}[A-Za-z\s'-]{2,}\z/
   GITHUB_USERNAME_REGEX = /\A[a-zA-Z0-9_-]{1,}\z/
@@ -25,4 +27,8 @@ class Validator
 	 return !!phone.match?(PHONE_REGEX) && phone != nil
   end
 	
+  def self.is_valid_birth_date?(value)
+    return date = Date.parse(value) != nil
+  end
+
 end

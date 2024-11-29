@@ -29,7 +29,7 @@ class StudentBase
     end
 	
     protected def validate_and_set(value, is_valid)
-    		if isValid
+    		if is_valid
       			yield
     		else
       			raise ArgumentError, "#{value} is invalid."
