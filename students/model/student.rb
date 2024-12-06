@@ -11,7 +11,7 @@ class Student < StudentBase
 		self.name = name
 		self.surname = surname
 		self.lastname = lastname
-		self.birth_date = birth_date
+		self.birth_date = birth_date if !birth_date.nil?
 		set_contacts(phone: phone, telegram: telegram, mail: mail)
 	end
 	
@@ -21,9 +21,9 @@ class Student < StudentBase
 	end
 
 	def set_contacts(phone: nil, telegram: nil, mail: nil)
-		self.phone = phone
-		self.telegram = telegram
-		self.mail = mail
+		self.phone = phone if !phone.nil?
+		self.telegram = telegram if !telegram.nil?
+		self.mail = mail if !mail.nil?
 	end
 
 	def birth_date=(value)
@@ -51,26 +51,26 @@ class Student < StudentBase
 	end
 	
 	private def mail=(value)
+		puts value
 		validate_and_set(value, Validator.is_valid_mail?(value)) { @mail = value }
 	end
 
 	def contact()
 		if @phone
-			return @phone
-		elif @telegram
-			return @telegram
-		elif @mail
-			return @mail
-		else
-			return nil
+		  @phone
+		elsif @telegram
+		  @telegram
+		elsif @mail
+		  @mail
 		end
 	end
+	  
 
 	def <=>(student)
 		self.birth_date <=> student.birth_date
 	end
 
 	def get_info()
-		return "#{id}, #{get_initials()}, #{@git}, #{get_contacts()}"
+		return "#{id}, #{get_initials()}, #{@git}, #{contact}"
 	end
 end

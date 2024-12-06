@@ -2,8 +2,8 @@ require 'date'
 
 class Validator
   FULLNAME_REGEX = /\A[A-Z]{1}[A-Za-z\s'-]{2,}\z/
-  GITHUB_USERNAME_REGEX = /\A[a-zA-Z0-9_-]{1,}\z/
-  EMAIL_REGEX = /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/
+  GITHUB_USERNAME_REGEX = /\A[A-Za-z0-9\s'-]{2,}\z/
+  MAIL_REGEX = /\A[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/
   TELEGRAM_USERNAME_REGEX = /\A@?[a-zA-Z0-9_]{1,}\z/
   PHONE_REGEX = /\A\+?\d{1,2}\s?\d{10}[\s.-]?\z/
 
@@ -15,8 +15,9 @@ class Validator
     return !!git.match?(GITHUB_USERNAME_REGEX) && git != nil
   end
 
-  def self.is_valid_mail?(email)
-    return !!email.match?(EMAIL_REGEX) && email != nil
+  def self.is_valid_mail?(mail)
+    puts "Hahahah ya eblan = " + mail
+    return !!mail.match?(MAIL_REGEX) && mail != nil
   end
 
   def self.is_valid_telegram?(telegram)
@@ -24,11 +25,11 @@ class Validator
   end
 	
   def self.is_valid_phone?(phone)
-	 return !!phone.match?(PHONE_REGEX) && phone != nil
+	 return phone != nil && !!phone.match?(PHONE_REGEX)
   end
 	
-  def self.is_valid_birth_date?(value)
-    return date = Date.parse(value) != nil
+  def self.is_valid_birth_date?(date)
+    return date = Date.parse(date) && date != nil
   end
 
 end

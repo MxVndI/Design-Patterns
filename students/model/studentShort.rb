@@ -26,7 +26,7 @@ class StudentShort < StudentBase
   end
    
   def get_initials()
-	return @fio
+	  return @fio
   end
 	
 end
