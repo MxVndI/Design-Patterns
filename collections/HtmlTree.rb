@@ -138,14 +138,14 @@ class Html_tree
   body = Tag.new(name:'body')
   div = Tag.new(name:'div',attributes:{class: 'test1'}, content:'testMeow')
   div2 = Tag.new(name:'div',attributes:{class: 'test1'}, content:'testMur')
-  span = Tag.new(name:'p', content: 'text')
+  p = Tag.new(name:'p', content: 'text')
   
   puts div2.to_s
   puts div.has_children?
   puts div.to_html
 
   html.add_child(body)
-  body.add_child([div,span])
+  body.add_child([div,p])
   div.add_child(div2)
   
   puts div.to_s
