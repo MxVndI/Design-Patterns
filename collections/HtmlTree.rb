@@ -104,8 +104,7 @@ class Html_tree
     def to_s
         attributes = @attributes.map { |key, value| "#{key}=\"#{value}\"" }.join(" ")
         content = @content.empty? ? "" : " #{@content}"
-      
-        "<#{@name}#{' ' unless attributes.empty?}#{attributes}>#{content}</#{@name}>"
+        "<#{@name}#{' ' unless attributes.empty?}#{attributes}>#{content} </#{@name}>"
       end
       
     
@@ -137,9 +136,9 @@ class Html_tree
   
   html = Tag.new(name:'html')
   body = Tag.new(name:'body')
-  div = Tag.new(name:'div',attributes:{class: 'test1'}, content:'test22')
-  div2 = Tag.new(name:'div',attributes:{class: 'test1'}, content:'test33')
-  span = Tag.new(name:'span', content: 'test3')
+  div = Tag.new(name:'div',attributes:{class: 'test1'}, content:'testMeow')
+  div2 = Tag.new(name:'div',attributes:{class: 'test1'}, content:'testMur')
+  span = Tag.new(name:'p', content: 'text')
   
   puts div2.to_s
   puts div.has_children?
@@ -158,6 +157,7 @@ class Html_tree
   puts mytree.root.name
   puts mytree.to_html
   
+  puts "Проходим each"
   mytree.each do |tag|
     puts tag.to_s
   end
