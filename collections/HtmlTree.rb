@@ -104,9 +104,8 @@ class Html_tree
     def to_s
         attributes = @attributes.map { |key, value| "#{key}=\"#{value}\"" }.join(" ")
         content = @content.empty? ? "" : " #{@content}"
-        children = @children.empty? ? "" : @children.map { |child| child.to_s }.join("\n")
       
-        "<#{@name}#{' ' unless attributes.empty?}#{attributes}>#{content}#{children}</#{@name}>"
+        "<#{@name}#{' ' unless attributes.empty?}#{attributes}>#{content}</#{@name}>"
       end
       
     
@@ -158,27 +157,7 @@ class Html_tree
   
   puts mytree.root.name
   puts mytree.to_html
-
-  mytree.dfs_root do |tag|
-    puts tag.name
-    puts tag.attributes.inspect
-    puts tag.content
-    puts "Children:"
-    tag.children.each do |child|
-      puts "- #{child.name}"
-    end
-    puts "------------------------"
-  end
-
-  mytree.bfs_root do |tag|
-    puts tag.name
-    puts tag.attributes.inspect
-    puts tag.content
-    puts "Children:"
-    tag.children.each do |child|
-      puts "- #{child.name}"
-    end
-    puts "------------------------"
-  end
   
-  
+  mytree.each do |tag|
+    puts tag.to_s
+  end
