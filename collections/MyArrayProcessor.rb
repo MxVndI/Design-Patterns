@@ -40,7 +40,7 @@ class MyArrayProcessor
         array_copy = @array.dup
         n.times do
           max_val = array_copy.max
-          result.append(max_val) unless max_val.nil?
+          result.append(yield(max_val)) unless max_val.nil?
           array_copy.delete_at(array_copy.index(max_val)) if max_val
         end
         return result
