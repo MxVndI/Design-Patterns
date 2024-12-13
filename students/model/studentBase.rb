@@ -27,7 +27,15 @@ class StudentBase
     def git=(value)
 	    validate_and_set(value, Validator.is_valid_git?(value)) { @git = value }
     end
-	
+
+	def id=(id)
+        if id.nil? || id.is_a?(Integer)
+          @id = id
+        else
+          raise ArgumentError, "ID должен быть числом"
+        end
+    end
+
     protected def validate_and_set(value, is_valid)
     		if is_valid
       			yield

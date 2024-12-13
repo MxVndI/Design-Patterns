@@ -16,7 +16,6 @@ class Validator
   end
 
   def self.is_valid_mail?(mail)
-    puts "Hahahah ya eblan = " + mail
     return !!mail.match?(MAIL_REGEX) && mail != nil
   end
 

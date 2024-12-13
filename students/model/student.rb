@@ -6,20 +6,17 @@ class Student < StudentBase
 	
 	attr_reader :name, :surname, :lastname, :phone, :telegram, :mail, :birth_date 
 	
-	def initialize(name:, surname:, lastname:, phone: nil, telegram: nil, mail: nil, git: nil, id: nil, birth_date: nil)
-		super(id: id, git: git)
-		self.name = name
-		self.surname = surname
-		self.lastname = lastname
-		self.birth_date = birth_date if !birth_date.nil?
-		set_contacts(phone: phone, telegram: telegram, mail: mail)
-	end
+	def initialize(params = {})
+    super(id: params[:id], git: params[:git])
+    
+    self.name = params[:name]
+    self.surname = params[:surname]
+    self.lastname = params[:lastname]
+    self.birth_date = params[:birth_date] if params[:birth_date]
+    
+    set_contacts(phone: params[:phone], telegram: params[:telegram], mail: params[:mail])
+  end
 	
-	def to_s()
-		return "Student {id: #{@id}, name: #{name}, surname: #{surname}, lastname: #{lastname},  
-		contacts: #{get_contacts()} git: #{@git}, birh_date: #{birth_date} }\n"
-	end
-
 	def set_contacts(phone: nil, telegram: nil, mail: nil)
 		self.phone = phone if !phone.nil?
 		self.telegram = telegram if !telegram.nil?
@@ -72,5 +69,24 @@ class Student < StudentBase
 
 	def get_info()
 		return "#{id}, #{get_initials()}, #{@git}, #{contact}"
+	end
+
+	def to_h() 
+		{ 
+    		id: self.id, 
+    		name: self.name, 
+    		surname: self.surname, 
+    		lastname: self.lastname, 
+    		birth_date: self.birth_date, 
+    		telegram: self.telegram,
+    		mail: self.mail, 
+    		phone: self.phone, 
+    		git: self.git 
+    	}
+	end
+	
+	def to_s()
+		"Student {id: #{@id}, name: #{name}, surname: #{surname}, lastname: #{lastname},  
+		contact: #{contact()}, git: #{@git}, birth_date: #{birth_date} }\n"
 	end
 end
