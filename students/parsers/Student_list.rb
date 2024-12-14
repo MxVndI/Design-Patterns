@@ -2,17 +2,16 @@ class StudentsListBase
     attr_accessor :students
   
     def initialize(file_path, storage_strategy)
-      @file_path = file_path
       @storage_strategy = storage_strategy
-      @students = @storage_strategy.load_students(@file_path)
+      @students = @storage_strategy.load_students(file_path)
     end
 
-    def load_students()
-      @storage_strategy.load_students(@file_path)
+    def load_students(file_path)
+      @storage_strategy.load_students(file_path)
     end
   
-    def save_students()
-      @storage_strategy.save_students(@file_path, @students)
+    def save_students(file_path)
+      @storage_strategy.save_students(file_path, @students)
     end
   
     def get_student_by_id(id)
