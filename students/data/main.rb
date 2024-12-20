@@ -1,8 +1,8 @@
-require_relative 'DataList.rb'
-require_relative 'DataListStudentShort.rb'
-require_relative 'DataTable.rb'
-require_relative '../model/student.rb'
-require_relative '../model/studentShort.rb'
+require_relative 'data_list.rb'
+require_relative 'data_list_student_short.rb'
+require_relative 'data_table.rb'
+require_relative '../models/student.rb'
+require_relative '../models/student_short.rb'
 
 
 student1 = Student.new(name: 'Vovchick', surname: 'Taran', lastname:'Yayoy', birth_date: '2004-12-04', git: 'Ffdgf', mail: 'kingknifeYT@yandex.ru', id: 1)
