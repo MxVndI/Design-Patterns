@@ -3,16 +3,16 @@ require_relative '../models/student_short.rb'
 
 class StudentsListBase
     attr_accessor :students
+	attr_writer :storage_strategy
   
-    def initialize(file_path, storage_strategy)
+    def initialize(storage_strategy)
       @storage_strategy = storage_strategy
-      @students = @storage_strategy.load_students(file_path)
     end
 
     def load_students(file_path)
-      @storage_strategy.load_students(file_path)
+      @students = @storage_strategy.load_students(file_path)
     end
-  
+
     def save_students(file_path)
       @storage_strategy.save_students(file_path, @students)
     end

@@ -1,6 +1,8 @@
 class Html_tree
     include Enumerable
+	
     attr_reader :root
+	
     def initialize(html_input)
         if html_input.is_a?(String)
           @root = parse_main(html_input)
@@ -9,7 +11,7 @@ class Html_tree
         else
           raise ArgumentError, 'Ошибка!'
         end
-      end
+    end
     
     def dfs_root(&block)
         dfs_tag(@root, &block)
@@ -105,7 +107,7 @@ class Html_tree
         attributes = @attributes.map { |key, value| "#{key}=\"#{value}\"" }.join(" ")
         content = @content.empty? ? "" : " #{@content}"
         "<#{@name}#{' ' unless attributes.empty?}#{attributes}>#{content} </#{@name}>"
-      end
+    end
       
     
     def has_children?
@@ -136,8 +138,8 @@ class Html_tree
   
   html = Tag.new(name:'html')
   body = Tag.new(name:'body')
-  div = Tag.new(name:'div',attributes:{class: 'test1'}, content:'testMeow')
-  div2 = Tag.new(name:'div',attributes:{class: 'test1'}, content:'testMur')
+  div = Tag.new(name:'div',attributes:{class: 'testCLassYoy'}, content:'testMeow')
+  div2 = Tag.new(name:'div',attributes:{class: 'testCLAAAS'}, content:'testMur')
   p = Tag.new(name:'p', content: 'text')
   
   puts div2.to_s
@@ -152,12 +154,15 @@ class Html_tree
   puts div.has_children?
   puts div.children_count
   
-  mytree = Html_tree.new(html)
+  tree = Html_tree.new(html)
   
-  puts mytree.root.name
-  puts mytree.to_html
+  puts tree.root.name
+  puts tree.to_html
   
   puts "Проходим each"
-  mytree.each do |tag|
+  tree.each do |tag|
     puts tag.to_s
   end
+
+puts "Проходим селектом"
+tree.select { |tag| puts tag if tag.name == "div" }

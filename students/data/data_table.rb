@@ -13,7 +13,7 @@ class DataTable
     end
 
     def row_count()
-        @data.length - 1
+        @data.length
     end
     
     def column_count()

@@ -3,6 +3,7 @@ require_relative '../data/data_list_student_short.rb'
 require_relative '../models/student_short.rb'
 
 class StudentsListDB
+
   def initialize
     @client = DatabaseConnection.instance
   end

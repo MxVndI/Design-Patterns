@@ -21,6 +21,13 @@ class DataList
     def get_data()
         raise NotImplementedError, 'Метод get_data должен быть реализован в наследниках'
     end
+	
+	def get_data_table()
+		data = []
+		data << get_names()
+		data << get_data()
+		DataTable.new(data)
+	end
 
     def set_elements(elements)
         unless elements.is_a?(Array)

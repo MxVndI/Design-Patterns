@@ -3,7 +3,7 @@
   :name: Che
   :surname: Che
   :lastname: Che
-  :birth_date: 2003.03.03
+  :birth_date: '2003-03-03'
   :telegram: "@test3"
   :mail:
   :phone:
@@ -12,7 +12,7 @@
   :name: Mee
   :surname: Mee
   :lastname: Mee
-  :birth_date: 2003.03.03
+  :birth_date: '2003-03-03'
   :telegram: "@test3"
   :mail:
   :phone:
@@ -44,3 +44,21 @@
   :mail: test3@gmail.com
   :phone:
   :git: test4
+- :id: 110
+  :name: Vovchick
+  :surname: Taran
+  :lastname: Yayoy
+  :birth_date: '2004-12-04'
+  :telegram:
+  :mail: kingknifeYT@yandex.ru
+  :phone:
+  :git: Ffdgf
+- :id: 110
+  :name: Vovchick
+  :surname: Taran
+  :lastname: Yayoy
+  :birth_date: '2004-12-04'
+  :telegram:
+  :mail: kingknifeYT@yandex.ru
+  :phone:
+  :git: Ffdgf
