@@ -89,18 +89,18 @@ puts "Выделенные ID: #{data_list.get_selected}"
 storage_strategy = StudentYAMLStorageStrategy.new
 student_list = StudentsListBase.new(storage_strategy)
 puts "Считываение с YAML"
-puts student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
+puts student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/recources/students.yaml")
 puts "Выведем по id"
 puts student_list.get_student_by_id(1)
 
 student4 = Student.new(name: 'Vovchick', surname: 'Taran', lastname:'Yayoy', birth_date: '2004-12-04', git: 'Ffdgf', mail: 'kingknifeYT@yandex.ru', id: 110)
 student_list.add_student(student4)
-student_list.save_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
+student_list.save_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/recources/students.yaml")
 student_list.storage_strategy = StudentJSONStorageStrategy.new
-student_list.save_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.json")
+student_list.save_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/recources/students.json")
 
 puts "Считывание с JSON"
-puts student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.json")
+puts student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/recources/students.json")
 puts "Выведем по id"
 puts student_list.get_student_by_id(1)
 

@@ -1,3 +1,5 @@
+require_relative 'data_table.rb'
+
 class DataList
     def initialize(elements)
         set_elements(elements)
