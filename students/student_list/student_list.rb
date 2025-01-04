@@ -2,8 +2,8 @@ require_relative '../data/data_list_student_short.rb'
 require_relative '../models/student_short.rb'
 
 class StudentsListBase
-    attr_accessor :students
-	attr_writer :storage_strategy
+    attr_reader :students
+	  attr_writer :storage_strategy
   
     def initialize(storage_strategy)
       @storage_strategy = storage_strategy
@@ -33,27 +33,30 @@ class StudentsListBase
     end
   
     def add_student(student)
-      new_id = (@students.map(&:id).max || 0) + 1
-      student.id = new_id
-      @students << student
-      save_students
+      if (!@students.include?(student))
+        new_id = (@students.map(&:id).max || 0) + 1
+        student.id = new_id
+        @students << student  
+    else
+      raise ArgumentError, 'Этот студент уже был добавлен'
     end
+  end
 
     def update_student_by_id(id, new_student)
-      index = @students.find_index { |student| student.id == id }
-      return unless index
-  
-      new_student.id = id
-      @students[index] = new_student
-      save_students
+      if (!@students.include?(new_student) && id != new_student.id)
+        index = @students.find_index { |student| student.id == id }
+        return unless index
+        new_student.id = id
+        @students[index] = new_student
+      end
     end
 
     def delete_student_by_id(id)
       @students.reject! { |student| student.id == id }
-      save_students
     end
   
     def get_student_short_count
       @students.size
     end
+
 end

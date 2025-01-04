@@ -55,7 +55,7 @@ data_list = DataListStudentShort.new(students)
 puts "Имена атрибутов: #{data_list.get_names}" 
 
 puts "Вся таблица"
-data_table = data_list.get_data_table
+data_table = data_list.get_table
 puts data_table.to_s
 puts
 puts data_table.column_count
@@ -86,24 +86,23 @@ puts "Выделенные ID: #{data_list.get_selected}"
 #rescue PG::Error => e
  # puts "Ошибка при выполнении SQL скрипта: #{e.message}"#end
 
-storage_strategy = StudentJSONStorageStrategy.new
+storage_strategy = StudentYAMLStorageStrategy.new
 student_list = StudentsListBase.new(storage_strategy)
-puts student_list.load_students("C:/Users/Vova/Desktop/Design-Patterns/students/student_list/storage_strategy/students.json")
-puts "Выведем по id"
-puts student_list.get_student_by_id(1)
-
 puts "Считываение с YAML"
-student_list.storage_strategy = StudentYAMLStorageStrategy.new
-puts student_list.load_students("C:/Users/Vova/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
+puts student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
 puts "Выведем по id"
 puts student_list.get_student_by_id(1)
 
 student4 = Student.new(name: 'Vovchick', surname: 'Taran', lastname:'Yayoy', birth_date: '2004-12-04', git: 'Ffdgf', mail: 'kingknifeYT@yandex.ru', id: 110)
-student_list.students.append(student4)
-student_list.save_students("C:/Users/Vova/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
-puts student_list.load_students("C:/Users/Vova/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
+student_list.add_student(student4)
+student_list.save_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.yaml")
+student_list.storage_strategy = StudentJSONStorageStrategy.new
+student_list.save_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.json")
+
+puts "Считывание с JSON"
+puts student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/student_list/storage_strategy/students.json")
 puts "Выведем по id"
-puts student_list.get_student_by_id(110)
+puts student_list.get_student_by_id(1)
 
 student_list_db = StudentsListDB.new
 puts student_list_db.student_count

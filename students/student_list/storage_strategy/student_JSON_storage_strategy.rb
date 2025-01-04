@@ -7,13 +7,17 @@ class StudentJSONStorageStrategy < StudentStorageStrategy
       return unless File.exist?(file_path)
       file_content = File.read(file_path)
       student_data = JSON.parse(file_content, symbolize_names: true)
-      students = student_data.map { |data| Student.new(data) }
+      students = []
+      student_data.each do |data|
+        student = Student.new(data)
+        students << student unless students.any? { |s| s == student }
+      end    
+    students
     end
-  
+ 
     def save_students(file_path, students)
-      File.open(@file_path, 'w') do |file|
-        file.write(students.map(&:to_h).to_json)
-      end
+      data = students.map(&:to_h)
+      File.write(file_path, JSON.pretty_generate(data))
     end
   
 end

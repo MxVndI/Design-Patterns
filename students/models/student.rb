@@ -65,6 +65,10 @@ class Student < StudentBase
 		self.birth_date <=> student.birth_date
 	end
 
+	def ==(student)
+		self.git == student.git || self.phone == student.git || self.telegram == student.telegram || self.mail == student.mail
+	end
+
 	def get_info()
 		return "#{id}, #{get_initials()}, #{@git}, #{contact}"
 	end

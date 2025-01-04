@@ -27,7 +27,10 @@ class DataList
     end
 	
     def get_table()
-	return DataTable.new(data)
+        data=[]
+        data << get_names()
+        data.concat(get_info())
+	    return DataTable.new(data)
     end
 	
     def set_elements(elements)
