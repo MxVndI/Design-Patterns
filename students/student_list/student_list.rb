@@ -29,7 +29,7 @@ class StudentsListBase
     end
 
     def sort_by_full_name!
-      self.students.sort_by! { |student| student.get_initials }
+      return self.students.sort_by! { |student| student.get_initials }
     end
 
     def add_student(student)

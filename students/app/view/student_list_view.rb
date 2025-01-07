@@ -123,8 +123,6 @@ class StudentListView < FXVerticalFrame
 
   def set_table_data(data_table)
     clear_table
-    p data_table.row_count
-    p data_table
     (1...data_table.row_count).each do |row|
       (0...data_table.column_count).each do |col|
         self.table.setItemText(row - 1, col, data_table.get(row, col).to_s)

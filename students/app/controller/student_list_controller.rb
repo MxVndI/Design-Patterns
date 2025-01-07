@@ -16,7 +16,6 @@ end
 def sort_table_by_column
     self.student_list.sort_by_full_name!
     self.data = self.student_list.get_k_n_student_short_list(self.view.current_page_label, self.view.class::ROWS_PER_PAGE)
-    puts "sorted = #{self.data.get_data}"
     self.data_list.count = self.student_list.get_student_short_count
     self.data_list.notify(self.data)
 end
