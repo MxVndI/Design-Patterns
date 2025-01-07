@@ -60,7 +60,6 @@ class Student < StudentBase
 		end
 	end
 	  
-
 	def <=>(student)
 		self.birth_date <=> student.birth_date
 	end

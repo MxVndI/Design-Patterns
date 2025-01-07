@@ -8,7 +8,7 @@ class DataTable
         end
     end
 
-    def get_element_at(row, column)
+    def get(row, column)
         return @data[row][column].dup
     end
 

@@ -1,13 +1,25 @@
 require_relative 'data_table.rb'
 
 class DataList
-    private attr_accessor :elements, :observers, :selected_ids, :count
+    attr_accessor :observers, :count
 
     def initialize(elements)
         set_elements(elements)
         @selected_ids = []
-      end
+        self.observers = []
+    end
     
+    def add_observer(observer)
+        self.observers << observer
+    end
+
+    def notify(data)
+        self.observers.each do |observer|
+            observer.set_table_params(data.get_names, self.count)
+            observer.set_table_data(data.get_data)
+        end
+    end
+
     def select(number)
         validate_index(number)
         id = @elements[number].id 

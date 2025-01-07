@@ -22,13 +22,16 @@ class StudentsListBase
     end
   
     def get_k_n_student_short_list(k, n, data_list = nil)
-      return [] if @students.nil?
       start = (k - 1) * n
-      students_short = self.students[start, n].map { |student| StudentShort.parse_student(student) }
+      students_short = @students[start, n].map { |student| StudentShort.parse_student(student) }
       data_list ||= DataListStudentShort.new(students_short)
       data_list
+  end
+
+
+    def sort_by_full_name!
+      @students.sort_by! { |student| student.get_initials }
     end
-    
   
     def sort_students
       @students.sort_by! { |student| "#{student.surname} #{student.name[0]}#{student.lastname[0]}" }
