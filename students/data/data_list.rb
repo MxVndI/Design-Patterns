@@ -1,6 +1,8 @@
 require_relative 'data_table.rb'
 
 class DataList
+    private attr_accessor :elements, :observers, :selected_ids, :count
+
     def initialize(elements)
         set_elements(elements)
         @selected_ids = []
