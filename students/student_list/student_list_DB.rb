@@ -8,7 +8,7 @@ class StudentsListDB
     @client = DatabaseConnection.instance
   end
 
-  def find_student_by_id(id)
+  def get_student_by_id(id)
     result = @client.query("SELECT * FROM student WHERE id = $1", [id]).first
     Student.new(**result.transform_keys(&:to_sym)) if result
   end

@@ -14,11 +14,11 @@ def initialize(view)
     self.data_list.add_observer(self.view)
 end
 
-
 def sort_table_by_column
     self.student_list.sort_by_full_name!
     self.data_list.notify(self.data)
 end
+
 def refresh_data
     self.student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/resources/students.json")
     puts "Loaded students: #{self.student_list.instance_variable_get(:@students).inspect}"
@@ -30,7 +30,8 @@ def refresh_data
     puts "Total student count: #{self.data_list.count}"
 
     self.data_list.notify(self.data)
-  end
+end
+
 
 def add
 

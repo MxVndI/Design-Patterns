@@ -42,13 +42,6 @@ class DataList
         raise NotImplementedError, 'Метод get_info должен быть реализован в наследниках'
     end
 	
-    def get_table()
-        data=[]
-        data << get_names()
-        data.concat(get_info())
-	    return DataTable.new(data)
-    end
-	
     def set_elements(elements)
         unless elements.is_a?(Array)
           raise ArgumentError, 'Данные должны быть массивом'

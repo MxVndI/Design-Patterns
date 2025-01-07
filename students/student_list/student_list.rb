@@ -28,15 +28,10 @@ class StudentsListBase
       data_list
   end
 
-
     def sort_by_full_name!
       @students.sort_by! { |student| student.get_initials }
     end
-  
-    def sort_students
-      @students.sort_by! { |student| "#{student.surname} #{student.name[0]}#{student.lastname[0]}" }
-    end
-  
+
     def add_student(student)
       if (!@students.include?(student))
         new_id = (@students.map(&:id).max || 0) + 1
