@@ -35,7 +35,7 @@ class DataList
     end
     
     def get_data()
-	return DataTable.new(get_info())
+	    return DataTable.new(get_info())
     end
 
     def get_info()

@@ -26,10 +26,10 @@ class StudentsListBase
       students_short = @students[start, n].map { |student| StudentShort.parse_student(student) }
       data_list ||= DataListStudentShort.new(students_short)
       data_list
-  end
+    end
 
     def sort_by_full_name!
-      @students.sort_by! { |student| student.get_initials }
+      self.students.sort_by! { |student| student.get_initials }
     end
 
     def add_student(student)

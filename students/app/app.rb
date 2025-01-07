@@ -11,7 +11,7 @@ class App < FXMainWindow
         FXTabItem.new(tabs, "Список студентов")
         student_list = FXVerticalFrame.new(tabs, opts: LAYOUT_FILL)
         student_list_view = StudentListView.new(student_list)
-        student_list_view.refresh_data
+        #student_list_view.refresh_data
         FXTabItem.new(tabs, "Вкладка 2")
         FXVerticalFrame.new(tabs, opts: LAYOUT_FILL)
         FXTabItem.new(tabs, "Вкладка 3")

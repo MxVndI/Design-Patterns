@@ -2,13 +2,6 @@ require 'fox16'
 
 require_relative '../../data/data_list.rb'
 require_relative '../controller/student_list_controller.rb'
-require_relative '../../data/data_list_student.rb'
-require_relative '../../data/data_list_student_short.rb'
-require_relative '../../student_list/student_list.rb'
-require_relative '../../student_list/student_list_DB.rb'
-require_relative '../../student_list/storage_strategy/student_JSON_storage_strategy.rb'
-require_relative '../../student_list/storage_strategy/student_YAML_storage_strategy.rb'
-require 'pg'
 
 include Fox
 
@@ -97,7 +90,7 @@ class StudentListView < FXVerticalFrame
 
     self.table.columnHeader.connect(SEL_COMMAND) do |_, _, pos|
         self.controller.sort_table_by_column
-        self.controller.refresh_data
+        #self.controller.refresh_data
       end
   end
   
@@ -130,6 +123,8 @@ class StudentListView < FXVerticalFrame
 
   def set_table_data(data_table)
     clear_table
+    p data_table.row_count
+    p data_table
     (1...data_table.row_count).each do |row|
       (0...data_table.column_count).each do |col|
         self.table.setItemText(row - 1, col, data_table.get(row, col).to_s)
@@ -165,7 +160,7 @@ class StudentListView < FXVerticalFrame
   end
   
   def on_update
-    self.refresh_data
+    self.controller.refresh_data
   end
   
   def on_edit
@@ -184,8 +179,6 @@ class StudentListView < FXVerticalFrame
     self.controller.delete(self.selected_rows)
   end
 
-
-
   def switch_page(direction)
     new_page = self.current_page_label + direction
     if new_page > 0 && new_page <= self.total_pages
@@ -194,7 +187,6 @@ class StudentListView < FXVerticalFrame
     end
   end
 
-  
   def get_selected_rows
     selected_rows = []
 
@@ -224,7 +216,6 @@ class StudentListView < FXVerticalFrame
     end
   end
 
-
   def reset_filters
     self.filters.each_value do |field|
       field[:combo_box].setCurrentItem(0) if !field[:combo_box].nil?
@@ -233,5 +224,4 @@ class StudentListView < FXVerticalFrame
     self.controller.refresh_data
   end
   
-
 end
