@@ -1,17 +1,6 @@
 [
   {
     "id": 1,
-    "name": "Gfd",
-    "surname": "Vfd",
-    "lastname": "Ref",
-    "birth_date": "2003-03-03",
-    "telegram": "@test4",
-    "mail": "fddfhgfhgfds@fdfdg.cr",
-    "phone": null,
-    "git": "test86435546"
-  },
-  {
-    "id": 2,
     "name": "Vovchick",
     "surname": "Taran",
     "lastname": "Yayoy",
@@ -20,60 +9,5 @@
     "mail": "kingknifeYT@yandex.ru",
     "phone": null,
     "git": "Ffdgf"
-  },
-  {
-    "id": 3,
-    "name": "Gfd",
-    "surname": "Vfd",
-    "lastname": "Ref",
-    "birth_date": "2003-03-03",
-    "telegram": "@test5",
-    "mail": "fdsfdsfds@fdfdg.cr",
-    "phone": null,
-    "git": "test876"
-  },
-  {
-    "id": 4,
-    "name": "Gfd",
-    "surname": "Vfd",
-    "lastname": "Ref",
-    "birth_date": "2003-03-03",
-    "telegram": "@test6",
-    "mail": "fssetuydg@fdfdg.cr",
-    "phone": null,
-    "git": "test875676"
-  },
-  {
-    "id": 5,
-    "name": "Gfd",
-    "surname": "Vfd",
-    "lastname": "Ref",
-    "birth_date": "2003-03-03",
-    "telegram": "@test7",
-    "mail": "meowowowo@fdfdg.cr",
-    "phone": null,
-    "git": "test8436"
-  },
-  {
-    "id": 6,
-    "name": "Nanana",
-    "surname": "Gaga",
-    "lastname": "Tsgsgs",
-    "birth_date": "2004-03-03",
-    "telegram": "@test8",
-    "mail": "meowoko@fdfdg.cr",
-    "phone": null,
-    "git": "test84367"
-  },
-  {
-    "id": 7,
-    "name": "Nanana",
-    "surname": "Gaga",
-    "lastname": "Tsgsgs",
-    "birth_date": "2004-03-03",
-    "telegram": "@test9",
-    "mail": "meowottyo@fdfdg.cr",
-    "phone": null,
-    "git": "test843367"
   }
 ]

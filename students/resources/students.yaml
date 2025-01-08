@@ -1,14 +1,5 @@
 ---
 - :id: 1
-  :name: Che
-  :surname: Che
-  :lastname: Che
-  :birth_date: '2003-03-03'
-  :telegram: "@test3"
-  :mail:
-  :phone:
-  :git: test3
-- :id: 2
   :name: Vovchick
   :surname: Taran
   :lastname: Yayoy

@@ -8,7 +8,7 @@ class StudentListController
 def initialize(view)
     self.view = view
     self.student_list = StudentsListBase.new(StudentJSONStorageStrategy.new)
-    self.student_list.load_students("C:/Users/LesunVo/Desktop/Design-Patterns/students/resources/students.json")
+    self.student_list.load_students("C:/Users/Vova/Desktop/Design-Patterns/students/resources/students.json")
     self.data_list = DataListStudentShort.new([])
     self.data_list.add_observer(self.view)
 end
